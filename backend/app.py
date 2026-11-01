@@ -3,9 +3,11 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from pathlib import Path
 from model import analyze_image, calculate_severity
+from reports import reports_bp
 
 app = Flask(__name__)
 CORS(app)
+app.register_blueprint(reports_bp)
 
 UPLOAD_FOLDER = Path(__file__).parent / "uploads"
 UPLOAD_FOLDER.mkdir(exist_ok=True)

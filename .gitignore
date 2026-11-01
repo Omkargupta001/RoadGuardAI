@@ -7,12 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Node
+node_modules/
+dist/
+dist-ssr/
 *.local
 
-# Editor directories and files
+# Editor
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -28,6 +29,7 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+*/venv/
 
 # Model files
 *.pt
@@ -35,19 +37,20 @@ venv/
 # Uploaded files
 backend/uploads/*
 backend/runs/
+backend/community-backend/uploads/
+
+# Community database
+backend/community-backend/roadguard.db
+backend/community-backend/roadguard_backup.db
 
 # Environment
 .env
 .env.*
 
-# Node
-node_modules/
-dist/
-venv/
-*/venv/
+# Reports
+dist/backend/reports.json
+backend/reports.json
 
-# Community backend database and uploaded images
-backend/community-backend/roadguard.db
-backend/community-backend/roadguard_backup.db
+# Community uploaded images
 backend/community-backend/*.jpg
 backend/community-backend/*.webp
