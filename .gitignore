@@ -43,3 +43,11 @@ backend/runs/
 # Node
 node_modules/
 dist/
+venv/
+*/venv/
+
+# Community backend database and uploaded images
+backend/community-backend/roadguard.db
+backend/community-backend/roadguard_backup.db
+backend/community-backend/*.jpg
+backend/community-backend/*.webp

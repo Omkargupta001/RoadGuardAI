@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import "./App.css";
-
+import Community from "./community/Community";
 function RoadGuardLogo() {
   return (
     <div className="brand">
@@ -47,6 +47,8 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+  const [activePage, setActivePage] = useState("home");
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -116,6 +118,7 @@ function App() {
     analysisResult?.status === "success" &&
     detections.length === 0;
 
+
   return (
     <div className={darkMode ? "app dark" : "app light"}>
       {/* Navbar */}
@@ -129,10 +132,27 @@ function App() {
         </button>
 
         <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#about">About</a>
-        </div>
+  <button onClick={() => setActivePage("home")}>
+    Home
+  </button>
+
+  <button onClick={() => setActivePage("community")}>
+    Community
+  </button>
+
+  <button
+    onClick={() => {
+      setActivePage("home");
+      setTimeout(() => {
+        document.getElementById("how-it-works")?.scrollIntoView({
+          behavior: "smooth"
+        });
+      }, 0);
+    }}
+  >
+    How It Works
+  </button>
+</div>
 
         <button
           className="theme-indicator"
@@ -142,8 +162,13 @@ function App() {
           {darkMode ? "☀" : "☾"}
         </button>
       </nav>
+      
 
       {/* Hero */}
+      {activePage === "community" ? (
+  <Community />
+) : (
+  <>
       <main id="home" className="hero">
         <section className="hero-content">
           <div className="status-badge">
@@ -421,6 +446,8 @@ function App() {
           </div>
         </div>
       </section>
+      </>
+      )}
     </div>
   );
 }
