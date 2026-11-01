@@ -1,3 +1,4 @@
+
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -38,6 +39,15 @@ export default function RoadMap({ pos, reports = [] }) {
             {r.type === "accident" ? "Accident" : "Pothole"}
             <br />
             {r.time}
+            {r.severity != null && (
+              <>
+                <br />
+                Severity:{" "}
+                {typeof r.severity === "object"
+                  ? JSON.stringify(r.severity)
+                  : String(r.severity)}
+              </>
+            )}
           </Popup>
         </Marker>
       ))}
