@@ -42,4 +42,5 @@ backend/runs/
 
 # Node
 node_modules/
-dist/
+dist/backend/reports.json
+backend/reports.json
