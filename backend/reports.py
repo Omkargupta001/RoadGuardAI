@@ -54,6 +54,8 @@ def create_report():
         "lat": lat,
         "lng": lng,
         "time": time.strftime("%H:%M:%S"),
+        "severity": data.get("severity"),
+        "photo": data.get("photo"),
     }
 
     with _lock:
