@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "./hooks/useLocation";
-const details = useLocationDetails();
-console.log(details);
+
 import RoadMap from "./components/RoadMap";
 
 const API = "http://127.0.0.1:5000";
