@@ -48,6 +48,12 @@ def create_report():
     if report_type not in VALID_TYPES:
         return jsonify({"error": "type must be 'pothole' or 'accident'"}), 400
 
+    location_name = data.get("locationName")
+    if isinstance(location_name, str):
+        location_name = location_name.strip()[:200] or None
+    else:
+        location_name = None
+
     report = {
         "id": int(time.time() * 1000),
         "type": report_type,
@@ -56,6 +62,7 @@ def create_report():
         "time": time.strftime("%H:%M:%S"),
         "severity": data.get("severity"),
         "photo": data.get("photo"),
+        "location_name": location_name,
     }
 
     with _lock:
